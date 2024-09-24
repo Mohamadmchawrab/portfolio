@@ -40,7 +40,7 @@ const HeroSection = () => {
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
            A Full Stack Engineer with experience developing and maintaining scalable
-           backend and frontend services for high-traffic web applications. I hold a Master's
+           backend and frontend services for high-traffic web applications. I hold a Masters
             degree in Computer Science with a focus on GIS and Data Science, and I am passionate
              about creating impactful digital experiences.
           </p>
