@@ -9,18 +9,18 @@ const TAB_DATA = [
     id: "skills",
     content: (
     <ul className="flex flex-row flex-wrap space-x-2 space-y-1">
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Python</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4 m-1">React</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4 m-1">Redux</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4 m-1">Typescript</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">PostgreSQL</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Next.js</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Node.js</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">JavaScript</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Docker</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Traefik</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Locust</li>
-      <li className="w-auto border-2 border-white rounded-2xl p-4">Grafana</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Python</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">React</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Redux</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Typescript</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">PostgreSQL</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Next.js</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Node.js</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">JavaScript</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Docker</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Traefik</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Locust</li>
+      <li className="w-auto border-2 border-white rounded-2xl p-2 m-1">Grafana</li>
     </ul>
     ),
   },
