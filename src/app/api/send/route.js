@@ -1,28 +1,41 @@
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT, 10),
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
-export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
+export async function POST(req) {
   try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+    const { email, subject, message } = await req.json();
+
+    if (!email || !subject || !message) {
+      console.error('Validation Error: Missing required fields');
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+      });
+    }
+
+    await transporter.sendMail({
+      from: `"Your App" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject,
+      text: message,
     });
-    return NextResponse.json(data);
+
+    console.log('Email sent successfully');
+    return new Response(JSON.stringify({ success: 'Email sent successfully!' }), {
+      status: 200,
+    });
   } catch (error) {
-    return NextResponse.json({ error });
+    console.error('Error occurred:', error);
+    return new Response(JSON.stringify({ error: 'Failed to send email' }), {
+      status: 500,
+    });
   }
 }

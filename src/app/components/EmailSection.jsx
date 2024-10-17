@@ -19,19 +19,16 @@ const EmailSection = () => {
     const JSONdata = JSON.stringify(data);
     const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
     const options = {
-      // The method is POST because we are sending data.
       method: "POST",
-      // Tell the server we're sending JSON.
       headers: {
         "Content-Type": "application/json",
       },
-      // Body of the request is the JSON data we created above.
       body: JSONdata,
     };
 
     const response = await fetch(endpoint, options);
+    console.log(response)
     const resData = await response.json();
 
     if (response.status === 200) {
@@ -86,9 +83,11 @@ const EmailSection = () => {
                 name="email"
                 type="email"
                 id="email"
+                disabled
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="mohamadmshawrab@gmail.com"
+                value="mohamadmshawrab@gmail.com"
               />
             </div>
             <div className="mb-6">
