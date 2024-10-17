@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req) {
   try {
-    const { email, subject, message } = await req.json();
+    const { email, subject, message, emailUser } = await req.json();
 
     if (!email || !subject || !message) {
       console.error('Validation Error: Missing required fields');
@@ -25,7 +25,7 @@ export async function POST(req) {
       from: `"Your App" <${process.env.SMTP_USER}>`,
       to: email,
       subject,
-      text: message,
+      text: `User's email: ${emailUser}, Request: ${message}`,
     });
 
     console.log('Email sent successfully');

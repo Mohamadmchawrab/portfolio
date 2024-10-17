@@ -15,6 +15,7 @@ const EmailSection = () => {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
+      emailUser: e.target.emailUser.value
     };
     const JSONdata = JSON.stringify(data);
     const endpoint = "/api/send";
@@ -78,6 +79,18 @@ const EmailSection = () => {
                 className="text-white block mb-2 text-sm font-medium"
               >
                 Your email
+              </label>
+              <input
+                name="emailUser"
+                required
+                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                placeholder="mohamadmshawrab@gmail.com"
+              />
+               <label
+                htmlFor="email"
+                className="text-white block mb-2 mt-3  text-sm font-medium"
+              >
+                To
               </label>
               <input
                 name="email"
