@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef , useEffect} from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
@@ -8,6 +8,31 @@ import Link from "next/link";
 
 
 const HeroSection = () => {
+  const videoRef = useRef(null); // Create a ref for the video element
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          video.play(); // Play the video when it enters the viewport
+        } else {
+          video.pause(); // Pause the video when it leaves the viewport
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5, // Video needs to be 50% in view to play
+    });
+
+    if (video) observer.observe(video);
+
+    // Cleanup the observer when the component unmounts
+    return () => observer.disconnect();
+  }, []);
+  
   return (
     <section className="lg:py-16">
       <div className="grid grid-cols-1 sm:grid-cols-12">
@@ -70,15 +95,16 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-4 place-self-center mt-4 lg:mt-0"
         >
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
-            <Image
-              src="/images/projects/hero-image.png"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-full"
-              width={390}
-              height={390}
-            />
-          </div>
+        <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative overflow-hidden">
+          <video
+            ref={videoRef}
+            src="/videos/video-hero.mp4"
+            autoPlay
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
         </motion.div>
       </div>
     </section>
